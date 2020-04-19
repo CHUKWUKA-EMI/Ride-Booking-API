@@ -6,6 +6,7 @@ export default sequelize.define("Bookings", {
 		type: Sequelize.UUID,
 		allowNull: false,
 		defaultValue: Sequelize.UUIDV4,
+		primaryKey: true,
 		unique: true,
 	},
 	user_id: {

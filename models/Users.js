@@ -6,6 +6,7 @@ export default sequelize.define("Users", {
 		type: Sequelize.UUID,
 		allowNull: false,
 		defaultValue: Sequelize.UUIDV4,
+		primaryKey: true,
 		unique: true,
 	},
 	name: {
@@ -25,5 +26,15 @@ export default sequelize.define("Users", {
 	},
 	bookings: {
 		type: Sequelize.INTEGER,
+	},
+	createdAt: {
+		field: "created_at",
+		type: Sequelize.DATE,
+		allowNull: false,
+	},
+	updatedAt: {
+		field: "updated_at",
+		type: Sequelize.DATE,
+		allowNull: false,
 	},
 });

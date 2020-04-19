@@ -6,13 +6,14 @@ export default sequelize.define("Routes", {
 		type: Sequelize.UUID,
 		allowNull: false,
 		defaultValue: Sequelize.UUIDV4,
+		primaryKey: true,
 		unique: true,
 	},
 	direction: {
 		type: Sequelize.STRING,
 	},
 	duration: {
-		type: Sequelize.INTEGER,
+		type: Sequelize.STRING,
 	},
 	vehicles: {
 		type: Sequelize.STRING,

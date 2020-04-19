@@ -6,7 +6,8 @@ module.exports = {
 			id: {
 				type: Sequelize.UUID,
 				allowNull: false,
-				defaultValue: Sequelize.UUIDV4,
+				defaultValue: Sequelize.UUID,
+				primaryKey: true,
 				unique: true,
 			},
 			direction: {
@@ -14,7 +15,7 @@ module.exports = {
 				allowNull: false,
 			},
 			duration: {
-				type: Sequelize.INTEGER,
+				type: Sequelize.STRING,
 				allowNull: false,
 			},
 			vehicles: {

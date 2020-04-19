@@ -6,7 +6,8 @@ module.exports = {
 			id: {
 				type: Sequelize.UUID,
 				allowNull: false,
-				defaultValue: Sequelize.UUIDV4,
+				defaultValue: Sequelize.UUID,
+				primaryKey: true,
 				unique: true,
 			},
 			name: {
@@ -27,11 +28,13 @@ module.exports = {
 			bookings: {
 				type: Sequelize.INTEGER,
 			},
-			created_at: {
+			createdAt: {
+				field: "created_at",
 				type: Sequelize.DATE,
 				allowNull: false,
 			},
-			updated_at: {
+			updatedAt: {
+				field: "updated_at",
 				type: Sequelize.DATE,
 				allowNull: false,
 			},
