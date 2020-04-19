@@ -21,5 +21,4 @@ export default sequelize.define("Routes", {
 	cost: {
 		type: Sequelize.FLOAT,
 	},
-	underscored: true,
 });

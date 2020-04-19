@@ -4,7 +4,7 @@ import graphqlHTTP from "express-graphql";
 import cors from "cors";
 import bodyParser from "body-parser";
 import graphqlSchema from "./graphql/schema/schema";
-import resolver from "./graphql/resolvers/Users";
+import resolver from "./graphql/resolvers/index";
 
 const app = express();
 

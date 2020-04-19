@@ -4,7 +4,7 @@ export default buildSchema(`
      type Routes{
        id: ID!
        direction: String!
-       duration: Int!
+       duration: String!
        vehicles: String!
        cost: Float!
      }
