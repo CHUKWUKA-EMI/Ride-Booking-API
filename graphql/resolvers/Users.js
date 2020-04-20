@@ -18,6 +18,8 @@ export default {
 					name: args.userInput.name,
 					email: args.userInput.email,
 					password: hashedPass,
+					created_at: new Date().toDateString(),
+					updated_at: new Date().toDateString(),
 				});
 				console.log(user.dataValues);
 				return user;
@@ -27,26 +29,24 @@ export default {
 		}
 	},
 
-	login: async (args) => {
-		console.log(args.email);
+	login: async ({ email, password }) => {
 		try {
 			const user = await db.users.findOne({
-				where: { email: args.email },
+				where: { email: email },
 			});
 			if (!user) {
 				throw new Error("User not found!");
 			}
-			const isValidPass = await bcrypt.compare(args.password, user.password);
+			const isValidPass = await bcrypt.compare(password, user.password);
 			if (!isValidPass) {
 				throw new Error("Invalid Password");
 			}
-			console.log(user.dataValues);
 			const token = jwt.sign(
 				{ user_id: user.id, email: user.email },
 				"mySecretKey",
-				{ expiresIn: "24hrs" }
+				{ expiresIn: "24h" }
 			);
-			//console.log(token);
+
 			return { user_id: user.id, token: token, tokenExpiration: 24 };
 		} catch (err) {
 			throw err;

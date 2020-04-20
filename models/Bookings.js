@@ -13,4 +13,18 @@ export default sequelize.define("Bookings", {
 		type: DataTypes.UUID,
 		allowNull: false,
 	},
+	trip: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	createdAt: {
+		field: "created_at",
+		type: Sequelize.DATE,
+		defaultValue: false,
+	},
+	updatedAt: {
+		field: "updated_at",
+		type: Sequelize.DATE,
+		defaultValue: false,
+	},
 });

@@ -1,6 +1,11 @@
 import Sequelize from "sequelize";
+import dotenv from "dotenv";
 
-const sequelize = new Sequelize("travellers", "root", "start12345", {
+dotenv.config();
+
+const passwd = process.env.PASSWORD;
+
+const sequelize = new Sequelize("travellers", "root", passwd, {
 	host: "127.0.0.1",
 	dialect: "mysql",
 	operatorAliases: false,

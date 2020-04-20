@@ -14,6 +14,10 @@ module.exports = {
 				type: Sequelize.UUID,
 				allowNull: false,
 			},
+			trip: {
+				type: Sequelize.STRING,
+				allowNull: false,
+			},
 			createdAt: {
 				field: "created_at",
 				type: Sequelize.DATE,

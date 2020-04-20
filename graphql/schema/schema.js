@@ -12,6 +12,7 @@ export default buildSchema(`
      type Bookings{
         id: ID!
         user_id: ID!
+        trip: Routes!
      }
 
      type Users{
