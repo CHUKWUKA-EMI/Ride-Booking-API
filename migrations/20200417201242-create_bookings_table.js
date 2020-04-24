@@ -2,34 +2,40 @@
 
 module.exports = {
 	up: (queryInterface, Sequelize) => {
-		return queryInterface.createTable("Bookings", {
-			id: {
-				type: Sequelize.UUID,
-				allowNull: false,
-				defaultValue: Sequelize.UUIDV4,
-				primaryKey: true,
-				unique: true,
+		return queryInterface.createTable(
+			"Bookings",
+			{
+				id: {
+					type: Sequelize.UUID,
+					allowNull: false,
+					defaultValue: Sequelize.UUIDV4,
+					primaryKey: true,
+					unique: true,
+				},
+				user_id: {
+					type: Sequelize.UUID,
+					allowNull: false,
+				},
+				trip: {
+					type: Sequelize.STRING,
+					allowNull: false,
+				},
+				completed: {
+					type: Sequelize.BOOLEAN,
+				},
+				createdAt: {
+					field: "created_at",
+					type: Sequelize.DATE,
+					defaultValue: false,
+				},
+				updatedAt: {
+					field: "updated_at",
+					type: Sequelize.DATE,
+					defaultValue: false,
+				},
 			},
-			user_id: {
-				type: Sequelize.UUID,
-				allowNull: false,
-			},
-			trip: {
-				type: Sequelize.STRING,
-				allowNull: false,
-			},
-			createdAt: {
-				field: "created_at",
-				type: Sequelize.DATE,
-				allowNull: false,
-			},
-			updatedAt: {
-				field: "updated_at",
-				type: Sequelize.DATE,
-				allowNull: false,
-			},
-			//underscored: true,
-		});
+			{ timestamps: true }
+		);
 	},
 
 	down: (queryInterface, Sequelize) => {

@@ -5,14 +5,15 @@ export default buildSchema(`
        id: ID!
        direction: String!
        duration: String!
-       vehicles: String!
+       vehicle: String!
        cost: Float!
      }
       
      type Bookings{
         id: ID!
         user_id: ID!
-        trip: Routes!
+        trip: String!
+        completed:Boolean!
      }
 
      type Users{
@@ -20,12 +21,11 @@ export default buildSchema(`
        name: String!
        email: String!
        password: String!
-       bookings: [Bookings!]!
        
      }
 
      type authData{
-       user_id: ID!
+       userId: ID!
        token: String!
        tokenExpiration: Int!
      }
@@ -39,14 +39,15 @@ export default buildSchema(`
    type RootQuery{
       routes: [Routes!]!
       bookings: [Bookings!]!
+      completedTrips(completed:Boolean): [Bookings!]!
       login(email: String, password: String): authData!
    }
    
    type RootMutation{
       createUser(userInput: UserInput): Users
       bookTrip(routeId: ID!):Bookings!
-      editBooking(bookingId: ID!): Bookings!
-      deleteBooking(bookingId:ID!): Routes!
+      editTrip(bookingId: ID!,completed:Boolean): Bookings!
+      deleteTrip(bookingId:ID!): Bookings!
    }
 
    schema{

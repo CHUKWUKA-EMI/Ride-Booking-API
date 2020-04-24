@@ -6,27 +6,22 @@ module.exports = {
 			id: {
 				type: Sequelize.UUID,
 				allowNull: false,
-				defaultValue: Sequelize.UUID,
+				defaultValue: Sequelize.UUIDV4,
 				primaryKey: true,
 				unique: true,
 			},
 			direction: {
 				type: Sequelize.STRING,
-				allowNull: false,
 			},
 			duration: {
 				type: Sequelize.STRING,
-				allowNull: false,
 			},
-			vehicles: {
+			vehicle: {
 				type: Sequelize.STRING,
-				allowNull: false,
 			},
 			cost: {
 				type: Sequelize.FLOAT,
-				allowNull: false,
 			},
-			//underscored: true,
 		});
 	},
 

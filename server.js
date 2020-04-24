@@ -2,14 +2,12 @@ import express from "express";
 import { json, urlencoded } from "express";
 import graphqlHTTP from "express-graphql";
 import cors from "cors";
-import jwt from "express-jwt";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 
 import graphqlSchema from "./graphql/schema/schema";
 import resolver from "./graphql/resolvers/index";
-
-import user from "./middleware/Authorization";
+import isAuth from "./middleware/Authorization";
 
 const app = express();
 
@@ -17,14 +15,8 @@ dotenv.config();
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
-//app.use(user);
-
-// const auth = jwt({
-// 	secret: "mySecretKey",
-// 	credentialsRequired: false,
-// });
-
 app.use(cors());
+app.use(isAuth);
 
 app.use(
 	"/graphql",

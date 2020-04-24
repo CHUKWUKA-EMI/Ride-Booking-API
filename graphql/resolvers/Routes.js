@@ -9,7 +9,7 @@ export default {
 					id: route.dataValues.id,
 					direction: route.dataValues.direction,
 					duration: route.dataValues.duration,
-					vehicles: route.dataValues.vehicles,
+					vehicle: route.dataValues.vehicle,
 					cost: route.dataValues.cost,
 				};
 			});

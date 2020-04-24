@@ -15,7 +15,7 @@ export default sequelize.define("Routes", {
 	duration: {
 		type: Sequelize.STRING,
 	},
-	vehicles: {
+	vehicle: {
 		type: Sequelize.STRING,
 	},
 	cost: {

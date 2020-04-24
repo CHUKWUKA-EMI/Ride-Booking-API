@@ -42,12 +42,12 @@ export default {
 				throw new Error("Invalid Password");
 			}
 			const token = jwt.sign(
-				{ user_id: user.id, email: user.email },
-				"mySecretKey",
+				{ userId: user.id, email: user.email },
+				process.env.TOKEN_SECRET,
 				{ expiresIn: "24h" }
 			);
 
-			return { user_id: user.id, token: token, tokenExpiration: 24 };
+			return { userId: user.id, token: token, tokenExpiration: 24 };
 		} catch (err) {
 			throw err;
 		}
