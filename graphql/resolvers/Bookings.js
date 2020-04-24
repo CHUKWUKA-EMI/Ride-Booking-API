@@ -39,7 +39,6 @@ export default {
 				completed: req.body.completed ? req.body.completed : false,
 			});
 
-			//console.log(booking.dataValues);
 			return { ...booking.dataValues };
 		} catch (err) {
 			throw err;
