@@ -35,12 +35,12 @@ export default {
 					<br /><br />
 					<b>Thank you</b>
 				  `;
-				await mailer.sendEmail(
-					"emijustice@dev.com",
-					args.userInput.email,
-					"Verify your Email",
-					html
-				);
+				// await mailer.sendEmail(
+				// 	"emijustice@dev.com",
+				// 	args.userInput.email,
+				// 	"Verify your Email",
+				// 	html
+				// );
 
 				const user = await db.users.create({
 					name: args.userInput.name,
