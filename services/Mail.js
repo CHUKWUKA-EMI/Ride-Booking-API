@@ -1,10 +1,11 @@
 import nodemailer from "nodemailer";
+import mailGun from "./credentials";
 
 const transport = nodemailer.createTransport({
 	service: "Mailgun",
 	auth: {
-		user: "postmaster@sandboxa9ab4638ee7d4702a642a4c9e95ae797.mailgun.org",
-		pass: "2330e33bb42be141bc1c39569190fc0f-65b08458-0d9f7c0b",
+		user: mailGun.MAILGUN_USER,
+		pass: mailGun.MAILGUN_PASS,
 	},
 	tls: {
 		rejectUnauthorized: false,
