@@ -2,7 +2,7 @@ import axios from "axios";
 import db from "../DB/database";
 import { XMLHttpRequest } from "xmlhttprequest";
 
-global.XMLHttpRequest = XMLHttpRequest;
+//global.XMLHttpRequest = XMLHttpRequest;
 
 describe("Users resolvers", () => {
 	test("createUser", async () => {
@@ -18,7 +18,7 @@ describe("Users resolvers", () => {
            }
       `,
 		});
-		
+
 		const { data } = response;
 		expect(data).toMatchObject({
 			data: {
