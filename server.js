@@ -4,9 +4,10 @@ import graphqlHTTP from "express-graphql";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
-
+import jwt from "jsonwebtoken";
 import graphqlSchema from "./graphql/schema/schema";
 import resolver from "./graphql/resolvers/index";
+import db from "./DB/database";
 import isAuth from "./middleware/Authorization";
 
 const app = express();
@@ -18,6 +19,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(isAuth);
 
+app.post("/verify", async (req, res, next) => {
+	try {
+		const { secretToken } = req.body;
+		const user = await db.users.findOne({ secretToken: secretToken });
+		if (!user) {
+			return res.send("User not found");
+		}
+		user.verified = true;
+		user.secretToken = "";
+		await user.save();
+		return res.send("user verified");
+	} catch (err) {
+		next(err);
+	}
+});
+
 app.use(
 	"/graphql",
 	graphqlHTTP({
@@ -27,7 +44,8 @@ app.use(
 	})
 );
 
-import "./DB/connection";
+//import "./DB/connection";
+db.sequelize.sync();
 
 const port = process.env.PORT || 5000;
 

@@ -4,8 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon --exec babel-node server.js"
+		"test": "jest --watchAll",
+		"start": "nodemon --exec babel-node server.js",
+		"createTable": "sequelize db:migrate",
+		"dropTable": "sequelize db:migrate:undo"
 	},
 	"author": "",
 	"license": "ISC",
@@ -13,6 +15,10 @@
 		"@babel/cli": "^7.8.4",
 		"@babel/core": "^7.9.0",
 		"@babel/node": "^7.8.7",
+		"@babel/polyfill": "^7.8.7",
+		"@sendgrid/mail": "^7.0.1",
+		"@types/mailgen": "^2.0.3",
+		"@types/randomstring": "^1.1.6",
 		"apollo-server": "^2.12.0",
 		"bcryptjs": "^2.4.3",
 		"cors": "^2.8.5",
@@ -23,19 +29,37 @@
 		"express-jwt": "^5.3.3",
 		"graphql": "^15.0.0",
 		"jsonwebtoken": "^8.5.1",
+		"mailgen": "^2.0.10",
 		"mongoose": "^5.9.7",
 		"mysql2": "^2.1.0",
+		"nodemailer": "^6.4.6",
+		"nodemailer-sendgrid": "^1.0.3",
+		"randomstring": "^1.1.5",
 		"rimraf": "^3.0.2",
 		"sequelize": "^5.21.6",
 		"sequelize-cli": "^5.5.1"
 	},
 	"devDependencies": {
+		"@babel/preset-env": "^7.9.5",
+		"axios": "^0.19.2",
+		"babel-jest": "^25.4.0",
+		"chai": "^4.2.0",
+		"jest": "^25.4.0",
+		"mocha": "^7.1.2",
 		"nodemon": "^2.0.3",
-		"@babel/preset-env": "^7.9.5"
+		"supertest": "^4.0.2",
+		"xmlhttprequest": "^1.8.0"
 	},
 	"babel": {
 		"presets": [
-			"@babel/preset-env"
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			]
 		]
 	}
 }

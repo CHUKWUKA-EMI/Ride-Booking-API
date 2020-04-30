@@ -26,6 +26,12 @@ export default sequelize.define(
 			allowNull: false,
 			required: true,
 		},
+		verified: {
+			type: Sequelize.BOOLEAN,
+		},
+		secretToken: {
+			type: Sequelize.STRING,
+		},
 		createdAt: {
 			field: "created_at",
 			type: Sequelize.DATE,

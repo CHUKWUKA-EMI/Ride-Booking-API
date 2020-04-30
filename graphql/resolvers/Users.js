@@ -1,5 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import randomString from "randomstring";
+import mailer from "../../services/Mail";
 
 import db from "../../DB/database";
 
@@ -13,15 +15,43 @@ export default {
 				throw new Error("User already exists");
 			} else {
 				const hashedPass = await bcrypt.hash(args.userInput.password, 10);
+				const token = jwt.sign(
+					{ username: args.userInput.name, email: args.userInput.email },
+					process.env.TOKEN_SECRET,
+					{ expiresIn: "14d" }
+				);
+
+				const html = `
+				    Hi ${args.userInput.name}
+				  <br />
+				  Thank you for registering with us
+					<br /><br />
+					To verify your account, type the following token:
+					<br />
+					Token: <b>${token}</b>
+					<br />
+					on the following page:
+					<a href="http://localhost:5000/verify">http://localhost:5000/verify</a>
+					<br /><br />
+					<b>Thank you</b>
+				  `;
+				await mailer.sendEmail(
+					"emijustice@dev.com",
+					args.userInput.email,
+					"Verify your Email",
+					html
+				);
 
 				const user = await db.users.create({
 					name: args.userInput.name,
 					email: args.userInput.email,
 					password: hashedPass,
+					verified: false,
+					secretToken: token,
 					created_at: new Date().toDateString(),
 					updated_at: new Date().toDateString(),
 				});
-				console.log(user.dataValues);
+				//console.log(user.dataValues);
 				return user;
 			}
 		} catch (err) {
@@ -41,6 +71,10 @@ export default {
 			if (!isValidPass) {
 				throw new Error("Invalid Password");
 			}
+			if (!user.verified) {
+				throw new Error("You need to verify your email");
+			}
+
 			const token = jwt.sign(
 				{ userId: user.id, email: user.email },
 				process.env.TOKEN_SECRET,
