@@ -18,6 +18,6 @@ jobs:
             - run: npm install
             - run: npm test
 workflows:
-  build-and-test:
+  build:
     jobs:
-      - build-and-test
+      - build
