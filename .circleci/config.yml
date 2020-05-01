@@ -2,8 +2,8 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:lts
       - image: circleci/mysql:8.0.4
+      - image: circleci/node:lts
         environment:
           MYSQL_HOST: "127.0.0.1"
           MYSQL_DB: travellers
