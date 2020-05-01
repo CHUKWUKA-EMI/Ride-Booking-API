@@ -1,15 +1,15 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@10.17.0
 jobs:
-  mysql:
-    image: mysql@5.7
+  build:
+    docker:
+      image: mysql@5.7
     environment:
       MYSQL_HOST: 127.0.0.1
       MYSQL_DB: travellers
       MYSQL_USER: root
       MYSQL_ALLOW_EMPTY_PASSWORD: true
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_bin --innodb-large-prefix=true --innodb-file-format=Barracuda
   build-and-test:
     executor:
       name: node/default
