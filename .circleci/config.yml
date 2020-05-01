@@ -1,10 +1,15 @@
 version: 2.1
-orbs:
-  node: circleci/node@1.1.6
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  build:
+    docker:
+      - image: circleci/node:lts
+      - image: circleci/mysql@5.7
+        environment:
+          MYSQL_HOST: "127.0.0.1"
+          MYSQL_DB: travellers
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: true
+
     steps:
       - checkout
       - node/with-cache:
@@ -12,6 +17,6 @@ jobs:
             - run: npm install
             - run: npm test
 workflows:
-  build-and-test:
+  build:
     jobs:
-      - build-and-test
+      - build
