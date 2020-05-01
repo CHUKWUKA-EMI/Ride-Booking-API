@@ -1,13 +1,19 @@
 import axios from "axios";
+import { graphql } from "graphql";
 import db from "../DB/database";
+import chai from "chai";
+import schema from "../graphql/schema/schema";
+import userResolvers from "../graphql/resolvers/Users";
 import { XMLHttpRequest } from "xmlhttprequest";
 
-//global.XMLHttpRequest = XMLHttpRequest;
-
 describe("Users resolvers", () => {
-	test("createUser", async () => {
-		const response = await axios.post("http://localhost:5000/graphql", {
-			query: `
+	global.jestExpect = global.jestExpect;
+	global.expect = chai.expect;
+
+	it("should create users", async () => {
+		process.env.NODE_ENV = "development";
+
+		const query = `
          mutation{
 						createUser(userInput:{name:"chukwuka",email:"emichukwuka@gmail.com", password:"start12345"}){
 							id
@@ -16,17 +22,12 @@ describe("Users resolvers", () => {
 							password
 						}
            }
-      `,
-		});
+			`,
+			result = await graphql(schema, query, userResolvers);
+		const { data } = result;
 
-		const { data } = response;
-		expect(data).toMatchObject({
-			data: {
-				createUser: {
-					name: "chukwuka",
-					email: "emichukwuka@gmail.com",
-				},
-			},
-		});
+		expect(data.createUser).to.be.ok;
+		const { email } = data.createUser;
+		expect(email).to.equal("emichukwuka@gmail.com");
 	});
 });
