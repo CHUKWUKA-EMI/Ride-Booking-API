@@ -1,14 +1,14 @@
-version: 2.1
-orbs:
-  node: circleci/node@10.17.0
+version: 2
 jobs:
   build:
     docker:
-      -image: mysql@5.7
-      environment:
-        MYSQL_HOST: "127.0.0.1"
-        MYSQL_DB: travellers
-        MYSQL_USER: root
+      - image: circleci/node@10.17.0 # The primary container where steps are run
+      - image: circleci/mysql:8.0.4
+        environment:
+          MYSQL_ROOT_PASSWORD: rootpw
+          MYSQL_DATABASE: test_db
+          MYSQL_USER: user
+          MYSQL_PASSWORD: passw0rd
         MYSQL_ALLOW_EMPTY_PASSWORD: true
   build-and-test:
     executor:
