@@ -4,12 +4,12 @@ orbs:
 jobs:
   build:
     docker:
-      image: mysql@5.7
-    environment:
-      MYSQL_HOST: 127.0.0.1
-      MYSQL_DB: travellers
-      MYSQL_USER: root
-      MYSQL_ALLOW_EMPTY_PASSWORD: true
+      -image: mysql@5.7
+      environment:
+        MYSQL_HOST: 127.0.0.1
+        MYSQL_DB: travellers
+        MYSQL_USER: root
+        MYSQL_ALLOW_EMPTY_PASSWORD: true
   build-and-test:
     executor:
       name: node/default
