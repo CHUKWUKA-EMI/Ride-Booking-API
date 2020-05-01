@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/mysql@5.7
+      - image: circleci/node@1.1.6
         environment:
           MYSQL_HOST: "127.0.0.1"
           MYSQL_DB: travellers
