@@ -26,8 +26,9 @@ describe("Users resolvers", () => {
 			result = await graphql(schema, query, userResolvers);
 		const { data } = result;
 
-		expect(data.createUser).to.be.ok;
-		const { email } = data.createUser;
-		expect(email).to.equal("emichukwuka@gmail.com");
+		expect(data.createUser).to.include({
+			name: "chukwuka",
+			email: "emichukwuka@gmail.com",
+		});
 	});
 });
