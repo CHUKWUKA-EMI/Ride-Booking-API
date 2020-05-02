@@ -26,7 +26,7 @@ describe("Users resolvers", () => {
 			result = await graphql(schema, query, userResolvers);
 		const { data } = result;
 
-		expect(data.createUser).to.include({
+		expect(JSON.parse(JSON.stringify(data.createUser))).to.include({
 			name: "chukwuka",
 			email: "emichukwuka@gmail.com",
 		});
