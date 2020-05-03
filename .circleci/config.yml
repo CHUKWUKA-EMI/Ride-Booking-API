@@ -9,7 +9,8 @@ jobs:
           MYSQL_DB: travellers
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: true
-
+    security_opt:
+      - seccomp:unconfined
     steps:
       - checkout
       - run:
