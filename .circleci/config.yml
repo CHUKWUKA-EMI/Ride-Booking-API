@@ -3,7 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:lts
-      - image: circleci/mysql
+      - image: mysql:8.0.3
+
         environment:
           MYSQL_HOST: "127.0.0.1"
           MYSQL_DB: travellers
@@ -13,8 +14,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "install dependencies"
+          name: install-npm-wee
           command: npm install
       - run:
-          name: "run tests"
+          name: test
           command: npm test
