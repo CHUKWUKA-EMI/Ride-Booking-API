@@ -4,7 +4,6 @@ import db from "../DB/database";
 import chai from "chai";
 import schema from "../graphql/schema/schema";
 import userResolvers from "../graphql/resolvers/Users";
-import { XMLHttpRequest } from "xmlhttprequest";
 
 describe("Users resolvers", () => {
 	global.jestExpect = global.jestExpect;
@@ -26,12 +25,9 @@ describe("Users resolvers", () => {
 			result = await graphql(schema, query, userResolvers);
 		const { data } = result;
 		//console.log(JSON.parse(JSON.stringify(data)));
-		const { email } = data.createUser;
+		const { createUser } = data;
+		const { email } = createUser;
 		console.log(email);
 		expect(email).to.equal("emichukwuka@gmail.com");
-		// expect(data.createUser).to.include({
-		// 	name: "chukwuka",
-		// 	email: "emichukwuka@gmail.com",
-		// });
 	});
 });
