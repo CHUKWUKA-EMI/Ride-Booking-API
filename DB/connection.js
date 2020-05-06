@@ -5,7 +5,7 @@ dotenv.config();
 
 const passwd = process.env.PASSWORD;
 
-const sequelize = new Sequelize("test_db", "user", "start12345", {
+const sequelize = new Sequelize("test_db", "user", passwd, {
 	host: "127.0.0.1",
 	dialect: "mysql",
 	operatorAliases: false,
