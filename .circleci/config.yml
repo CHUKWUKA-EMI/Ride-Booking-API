@@ -9,7 +9,7 @@ jobs:
           MYSQL_USER: ubuntu
           MYSQL_DATABASE: circle_test
           MYSQL_ROOT_PASSWORD: ubuntu
-          MYSQL_PASSWORD: ubuntu
+          MYSQL_PASSWORD: start12345
 
     steps:
       - checkout
