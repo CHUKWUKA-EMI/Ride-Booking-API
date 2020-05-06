@@ -9,7 +9,7 @@ jobs:
           MYSQL_HOST: "127.0.0.1"
           MYSQL_DB: travellers
           MYSQL_USER: root
-          MYSQL_PASSWORD: start12345
+          MYSQL_ROOT_PASSWORD: start12345
 
     steps:
       - checkout
