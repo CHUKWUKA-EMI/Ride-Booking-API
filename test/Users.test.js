@@ -24,10 +24,8 @@ describe("Users resolvers", () => {
 			`,
 			result = await graphql(schema, query, userResolvers);
 		const { data } = result;
-		console.log(JSON.parse(JSON.stringify(data)));
 		const { createUser } = data;
 		const { email } = createUser;
-		console.log(email);
 		expect(email).to.equal("emichukwuka@gmail.com");
 	});
 });
