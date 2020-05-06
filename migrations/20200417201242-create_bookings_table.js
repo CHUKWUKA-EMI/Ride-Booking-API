@@ -26,12 +26,10 @@ module.exports = {
 				createdAt: {
 					field: "created_at",
 					type: Sequelize.DATE,
-					defaultValue: false,
 				},
 				updatedAt: {
 					field: "updated_at",
 					type: Sequelize.DATE,
-					defaultValue: false,
 				},
 			},
 			{ timestamps: true }
