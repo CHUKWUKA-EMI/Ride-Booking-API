@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "jest --watchAll",
+		"test": "npm run migrate && jest --watchAll",
 		"start": "nodemon --exec babel-node server.js",
 		"createTable": "sequelize db:migrate",
 		"dropTable": "sequelize db:migrate:undo:all",
