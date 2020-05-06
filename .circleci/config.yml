@@ -7,7 +7,9 @@ jobs:
 
         environment:
           MYSQL_USER: ubuntu
+          MYSQL_DATABASE: circle_test
           MYSQL_ROOT_PASSWORD: ubuntu
+          MYSQL_PASSWORD: ubuntu
 
     steps:
       - checkout
