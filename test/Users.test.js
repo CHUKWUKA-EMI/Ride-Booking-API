@@ -1,6 +1,6 @@
 import axios from "axios";
 import { graphql } from "graphql";
-import db from "../DB/database";
+import db from "../DB/connection";
 import chai from "chai";
 import schema from "../graphql/schema/schema";
 import userResolvers from "../graphql/resolvers/Users";
@@ -23,10 +23,14 @@ describe("Users resolvers", () => {
            }
 			`,
 			result = await graphql(schema, query, userResolvers);
-		console.log("fire", result);
 		const { data } = result;
 		const { createUser } = data;
 		const { email } = createUser;
 		expect(email).to.equal("emichukwuka@gmail.com");
 	});
+});
+
+afterAll((done) => {
+	db.close();
+	done();
 });

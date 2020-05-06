@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "npm run migrate && jest",
+		"test": "npm run migrate && jest --detectOpenHandles",
 		"start": "nodemon --exec babel-node server.js",
 		"createTable": "sequelize db:migrate",
 		"dropTable": "sequelize db:migrate:undo:all",
