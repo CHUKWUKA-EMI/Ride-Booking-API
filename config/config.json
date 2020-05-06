@@ -2,7 +2,7 @@
 	"development": {
 		"username": "user",
 		"password": "start12345",
-		"database": "test_db",
+		"database": "travellers",
 		"dialect": "mysql"
 	},
 	"test": {
