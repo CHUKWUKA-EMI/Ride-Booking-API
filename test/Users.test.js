@@ -23,6 +23,7 @@ describe("Users resolvers", () => {
            }
 			`,
 			result = await graphql(schema, query, userResolvers);
+		console.log("fire", result);
 		const { data } = result;
 		const { createUser } = data;
 		const { email } = createUser;
