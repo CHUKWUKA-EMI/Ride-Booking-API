@@ -32,6 +32,6 @@ export default sequelize.define(
 			type: Sequelize.DATE,
 			defaultValue: false,
 		},
-	},
-	{ timestamps: true }
+	}
+	// { timestamps: true }
 );

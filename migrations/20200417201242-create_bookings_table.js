@@ -33,8 +33,8 @@ module.exports = {
 					type: Sequelize.DATE,
 					defaultValue: false,
 				},
-			},
-			{ timestamps: true }
+			}
+			// { timestamps: true }
 		);
 	},
 
