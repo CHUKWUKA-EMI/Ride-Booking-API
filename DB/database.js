@@ -5,7 +5,7 @@ import sequelize from "./connection";
 
 import users from "../models/Users";
 import routes from "../models/Routes";
-import bookings from "../middleware/Bookings";
+import bookings from "../models/Bookings";
 
 const db = {};
 
@@ -14,11 +14,11 @@ db.sequelize = sequelize;
 
 db.users = users;
 db.routes = routes;
-// db.bookings = bookings;
+db.bookings = bookings;
 
-// db.users.hasMany(db.bookings, { as: "bookings", foreignKey: "id" });
-// db.bookings.belongsTo(db.users, { as: "Users", foreignKey: "id" });
+db.users.hasMany(db.bookings, { as: "bookings", foreignKey: "id" });
+db.bookings.belongsTo(db.users, { as: "Users", foreignKey: "id" });
 
-// db.bookings.sync();
+db.bookings.sync();
 
 export default db;
