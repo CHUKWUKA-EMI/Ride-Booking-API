@@ -19,6 +19,6 @@ db.routes = routes;
 // db.users.hasMany(db.bookings, { as: "bookings", foreignKey: "id" });
 // db.bookings.belongsTo(db.users, { as: "Users", foreignKey: "id" });
 
-db.bookings.sync();
+// db.bookings.sync();
 
 export default db;
