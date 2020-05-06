@@ -6,7 +6,7 @@ jobs:
       - image: mysql:8.0.3
 
         environment:
-          MYSQL_ROOT_PASSWORD: rootpw
+          MYSQL_ROOT_PASSWORD: start12345
           MYSQL_DATABASE: test_db
           MYSQL_USER: user
           MYSQL_PASSWORD: passw0rd
