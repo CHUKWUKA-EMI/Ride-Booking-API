@@ -10,7 +10,7 @@ describe("Users resolvers", () => {
 	global.expect = chai.expect;
 
 	it("should create users", async () => {
-		process.env.NODE_ENV = "development";
+		process.env.NODE_ENV = "test";
 
 		const query = `
          mutation{
