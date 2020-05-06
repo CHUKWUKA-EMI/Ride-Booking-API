@@ -9,9 +9,6 @@ const sequelize = new Sequelize("test_db", "user", passwd, {
 	host: "127.0.0.1",
 	dialect: "mysql",
 	operatorAliases: false,
-	define: {
-		timestamps: false,
-	},
 });
 
 export default sequelize;
