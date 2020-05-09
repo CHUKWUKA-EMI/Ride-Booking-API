@@ -71,9 +71,9 @@ export default {
 			if (!isValidPass) {
 				throw new Error("Invalid Password");
 			}
-			if (!user.verified) {
-				throw new Error("You need to verify your email");
-			}
+			// if (!user.verified) {
+			// 	throw new Error("You need to verify your email");
+			// }
 
 			const token = jwt.sign(
 				{ userId: user.id, email: user.email },
@@ -81,7 +81,12 @@ export default {
 				{ expiresIn: "24h" }
 			);
 
-			return { userId: user.id, token: token, tokenExpiration: 24 };
+			return {
+				userId: user.id,
+				email: user.email,
+				token: token,
+				tokenExpiration: 24,
+			};
 		} catch (err) {
 			throw err;
 		}

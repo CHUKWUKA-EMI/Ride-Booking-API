@@ -26,6 +26,7 @@ export default buildSchema(`
 
      type authData{
        userId: ID!
+       email: String!
        token: String!
        tokenExpiration: Int!
      }
