@@ -47,7 +47,6 @@
 		"axios": "^0.19.2",
 		"babel-jest": "^25.4.0",
 		"chai": "^4.2.0",
-		"crossenv": "0.0.2-security",
 		"jest": "^25.4.0",
 		"mocha": "^7.1.2",
 		"nodemon": "^2.0.3",
