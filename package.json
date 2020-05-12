@@ -4,8 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
 		"test": "npm run migrate && jest --detectOpenHandles",
-		"start": "nodemon --exec babel-node server.js",
+		"start-dev": "nodemon --exec babel-node server.js",
+		"start": "npm run build && node dist/server.js",
 		"createTable": "sequelize db:migrate",
 		"dropTable": "sequelize db:migrate:undo:all",
 		"migrate": "npm run dropTable && npm run createTable"
