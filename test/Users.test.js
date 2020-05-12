@@ -1,9 +1,9 @@
-import jwt from "jsonwebtoken";
 import { graphql } from "graphql";
 import db from "../DB/connection";
 import chai from "chai";
 import schema from "../graphql/schema/schema";
 import userResolvers from "../graphql/resolvers/Users";
+import bookingResolvers from "../graphql/resolvers/Bookings";
 
 describe("Users resolvers", () => {
 	global.jestExpect = global.jestExpect;
