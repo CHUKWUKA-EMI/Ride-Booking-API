@@ -7,7 +7,7 @@
 	"description": "Ride Booking App",
 	"main": "server.js",
 	"scripts": {
-		"build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+		"build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules, ./npm-debug.log --copy-files",
 		"test": "npm run migrate && jest --detectOpenHandles",
 		"start-dev": "nodemon --exec babel-node server.js",
 		"start": "node dist/server.js",
