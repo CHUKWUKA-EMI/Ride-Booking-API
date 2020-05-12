@@ -4,4 +4,4 @@ credentials.js
 
 .env
 
-dist/
+# dist/
