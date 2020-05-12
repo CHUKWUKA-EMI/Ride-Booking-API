@@ -1,16 +1,16 @@
 {
 	"engines": {
-		"node": "10.16.2"
+		"node": "12.16.2"
 	},
 	"name": "server",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Ride Booking App",
 	"main": "server.js",
 	"scripts": {
 		"build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
 		"test": "npm run migrate && jest --detectOpenHandles",
 		"start-dev": "nodemon --exec babel-node server.js",
-		"start": "npm run build && npm install && node dist/server.js",
+		"start": "node dist/server.js",
 		"createTable": "sequelize db:migrate",
 		"dropTable": "sequelize db:migrate:undo:all",
 		"migrate": "npm run dropTable && npm run createTable"
@@ -53,10 +53,8 @@
 		"babel-jest": "^25.4.0",
 		"chai": "^4.2.0",
 		"jest": "^25.4.0",
-		"mocha": "^7.1.2",
 		"nodemon": "^2.0.3",
-		"supertest": "^4.0.2",
-		"xmlhttprequest": "^1.8.0"
+		"supertest": "^4.0.2"
 	},
 	"babel": {
 		"presets": [
