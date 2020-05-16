@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import randomString from "randomstring";
-//import mailer from "../../services/Mail";
+import mailer from "../../services/Mail";
 
 import db from "../../DB/database";
 
@@ -21,26 +21,30 @@ export default {
 					{ expiresIn: "14d" }
 				);
 
-				// const html = `
-				//     Hi ${args.userInput.name}
-				//   <br />
-				//   Thank you for registering with us
-				// 	<br /><br />
-				// 	To verify your account, type the following token:
-				// 	<br />
-				// 	Token: <b>${token}</b>
-				// 	<br />
-				// 	on the following page:
-				// 	<a href="http://localhost:5000/verify">http://localhost:5000/verify</a>
-				// 	<br /><br />
-				// 	<b>Thank you</b>
-				//   `;
-				// await mailer.sendEmail(
-				// 	"emijustice@dev.com",
-				// 	args.userInput.email,
-				// 	"Verify your Email",
-				// 	html
-				// );
+				const html = `
+				    Hi ${args.userInput.name}
+				  <br />
+				  Thank you for registering with us
+					<br /><br />
+					To verify your account, type the following token:
+					<br />
+					Token: <b>${token}</b>
+					<br />
+					on the following page:
+					<a href="http://localhost:5000/verify">http://localhost:5000/verify</a>
+					<br /><br />
+					<b>Thank you</b>
+				  `;
+				await mailer
+					.sendEmail(
+						"emijustice@dev.com",
+						args.userInput.email,
+						"Verify your Email",
+						html
+					)
+					.then(() => {
+						console.log("mail sent");
+					});
 
 				const user = await db.users.create({
 					name: args.userInput.name,
@@ -71,9 +75,9 @@ export default {
 			if (!isValidPass) {
 				throw new Error("Invalid Password");
 			}
-			// if (!user.verified) {
-			// 	throw new Error("You need to verify your email");
-			// }
+			if (!user.verified) {
+				throw new Error("You need to verify your email");
+			}
 
 			const token = jwt.sign(
 				{ userId: user.id, email: user.email },
@@ -83,7 +87,6 @@ export default {
 
 			return {
 				userId: user.id,
-				email: user.email,
 				token: token,
 				tokenExpiration: 24,
 			};

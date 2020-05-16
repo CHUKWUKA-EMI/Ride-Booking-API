@@ -45,7 +45,7 @@ app.use(
 );
 
 //import "./DB/connection";
-db.sequelize.sync();
+//db.sequelize.sync();
 
 const port = process.env.PORT || 5000;
 

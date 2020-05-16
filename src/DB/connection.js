@@ -13,7 +13,7 @@ const { PASSWORD, DB_URL } = process.env;
 // 		timestamps: false,
 // 	},
 // });
-const sequelize = new Sequelize(DB_URL);
+const sequelize = new Sequelize(DB_URL, { define: { timestamps: false } });
 
 export default sequelize;
 global.sequelize = sequelize;

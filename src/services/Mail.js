@@ -1,13 +1,16 @@
 import nodemailer from "nodemailer";
-import mailGun from "./credentials";
+import GMAIL from "./config";
 
 const transport = nodemailer.createTransport({
-	service: "Mailgun",
+	host: "smtp.gmail.com",
+	port: 465,
+	secure: true,
 	auth: {
-		user: mailGun.MAILGUN_USER,
-		pass: mailGun.MAILGUN_PASS,
+		user: GMAIL.USER,
+		pass: GMAIL.PASSWORD,
 	},
 	tls: {
+		cipher: "sslv3",
 		rejectUnauthorized: false,
 	},
 });
