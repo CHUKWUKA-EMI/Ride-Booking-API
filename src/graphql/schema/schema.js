@@ -21,7 +21,7 @@ export default buildSchema(`
        name: String!
        email: String!
        password: String!
-       
+       secretToken: String!
      }
 
      type authData{

@@ -10,7 +10,7 @@
 		"clean": "rimraf dist/",
 		"compile": "babel src/ --out-dir dist/  --copy-files",
 		"build": "npm run clean && npm run compile",
-		"test": "jest",
+		"test": "jest --detectOpenHandles",
 		"start-dev": "nodemon --exec babel-node src/server.js",
 		"start": "node dist/server.js",
 		"createTable": "sequelize db:migrate",

@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const { PASSWORD, DB_URL } = process.env;
+const { DB_URL } = process.env;
 
 // const sequelize = new Sequelize("travellers", "root", Pass, {
 // 	host: "127.0.0.1",
