@@ -43,7 +43,7 @@ jobs:
 
       - run:
           name: waiting for node server to start
-          command: wget --retry-connrefused --waitretry=2 -t 5 "http://$(cat logs/ip.log):5000" > /dev/null
+          command: wget --retry-connrefused --waitretry=2 -t 5 "http://$(cat logs/ip.log):5000/graphql" > /dev/null
 
       - run:
           name: test
