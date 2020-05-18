@@ -92,7 +92,7 @@ describe("Users resolvers", () => {
 			},
 		} = await axios({
 			method: "post",
-			url: "https://ride-booking-app.herokuapp.com/",
+			url: "http://localhost:5000/graphql",
 			data: {
 				query,
 			},
