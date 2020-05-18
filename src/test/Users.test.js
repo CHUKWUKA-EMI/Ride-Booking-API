@@ -38,6 +38,7 @@ describe("Users resolvers", () => {
 		} = await graphql(schema, query, userResolvers);
 		console.log(token, "token in beforeAll");
 		userToken = token;
+		jest.setTimeout(30000);
 	});
 
 	it("should create users", async () => {
@@ -92,7 +93,7 @@ describe("Users resolvers", () => {
 			},
 		} = await axios({
 			method: "post",
-			url: "http://192.168.176.3:5000/graphql",
+			url: "http://localhost:5000/graphql",
 			data: {
 				query,
 			},
