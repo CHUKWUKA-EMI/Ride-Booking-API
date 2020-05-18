@@ -34,12 +34,8 @@ jobs:
           command: npm install
       - run:
           name: starting node server
-          command: mkdir logs && npm run start-dev 2>&1 | tee logs/node_server.log
+          command: npm run start-dev 2>&1
           background: true
-
-      - run:
-          name: storing local IP address
-          command: node -p "require('ip').address()" > logs/ip.log
 
       - run:
           name: test
