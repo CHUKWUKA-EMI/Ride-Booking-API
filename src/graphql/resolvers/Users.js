@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import randomString from "randomstring";
-import mailer from "../../services/Mail";
 
 import db from "../../DB/database";
 
