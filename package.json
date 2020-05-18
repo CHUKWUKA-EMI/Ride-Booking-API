@@ -15,7 +15,8 @@
 		"start": "node dist/server.js",
 		"createTable": "sequelize db:migrate",
 		"dropTable": "sequelize db:migrate:undo:all",
-		"migrate": "npm run dropTable && npm run createTable"
+		"migrate": "npm run dropTable && npm run createTable",
+		"fillRouteTable": "nodemon --exec babel-node src/DB/routes.insert.js"
 	},
 	"author": "",
 	"license": "ISC",
