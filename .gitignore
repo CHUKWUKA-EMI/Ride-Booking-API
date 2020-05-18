@@ -1,7 +1,7 @@
 node_modules
 
-credentials.js
+src/services/config.js
 
 .env
 
-dist/
+dist

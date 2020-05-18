@@ -44,7 +44,7 @@ export default {
 			throw err;
 		}
 	},
-	editTrip: async ({ bookingId, completed }, req, res) => {
+	editTrip: async ({ bookingId, completed }, req) => {
 		if (!req.isAuth) {
 			throw new Error("User not Authenticated");
 		}
@@ -61,9 +61,10 @@ export default {
 			throw new Error("User not authenticated");
 		}
 		try {
-			const deleted = await db.bookings.destroy({
+			const deleted = await db.bookings.findOne({
 				where: { id: args.bookingId },
 			});
+			await deleted.destroy({ truncate: true });
 		} catch (err) {
 			throw err;
 		}

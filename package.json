@@ -10,12 +10,13 @@
 		"clean": "rimraf dist/",
 		"compile": "babel src/ --out-dir dist/  --copy-files",
 		"build": "npm run clean && npm run compile",
-		"test": "npm run migrate && jest",
+		"test": "jest --detectOpenHandles",
 		"start-dev": "nodemon --exec babel-node src/server.js",
 		"start": "node dist/server.js",
 		"createTable": "sequelize db:migrate",
 		"dropTable": "sequelize db:migrate:undo:all",
-		"migrate": "npm run dropTable && npm run createTable"
+		"migrate": "npm run dropTable && npm run createTable",
+		"fillRouteTable": "nodemon --exec babel-node src/DB/routes.insert.js"
 	},
 	"author": "",
 	"license": "ISC",
@@ -36,6 +37,7 @@
 		"express-graphql": "^0.9.0",
 		"express-jwt": "^5.3.3",
 		"graphql": "^15.0.0",
+		"ip": "^1.1.5",
 		"jsonwebtoken": "^8.5.1",
 		"mailgen": "^2.0.10",
 		"mongoose": "^5.9.7",

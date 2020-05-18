@@ -21,12 +21,11 @@ export default buildSchema(`
        name: String!
        email: String!
        password: String!
-       
+       secretToken: String!
      }
 
      type authData{
        userId: ID!
-       email: String!
        token: String!
        tokenExpiration: Int!
      }
@@ -48,7 +47,7 @@ export default buildSchema(`
       createUser(userInput: UserInput): Users
       bookTrip(routeId: ID!):Bookings!
       editTrip(bookingId: ID!,completed:Boolean): Bookings!
-      deleteTrip(bookingId:ID!): Bookings!
+      deleteTrip(bookingId:ID!): Bookings
    }
 
    schema{

@@ -7,12 +7,13 @@ jobs:
 
         environment:
           MYSQL_ROOT_PASSWORD: start12345
-          MYSQL_DATABASE: travellers
-          MYSQL_USER: user
+          MYSQL_DATABASE: justice
+          MYSQL_USER: rowland
           MYSQL_PASSWORD: start12345
 
     steps:
       - checkout
+
       - run:
           # Our primary container isn't MYSQL so run a sleep command until it's ready.
           name: Waiting for MySQL to be ready
@@ -31,6 +32,15 @@ jobs:
       - run:
           name: install-npm-wee
           command: npm install
+      - run:
+          name: starting node server
+          command: mkdir logs && npm run start-dev 2>&1 | tee logs/node_server.log
+          background: true
+
+      - run:
+          name: storing local IP address
+          command: node -p "require('ip').address()" > logs/ip.log
+
       - run:
           name: test
           command: npm test

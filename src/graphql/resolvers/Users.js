@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import randomString from "randomstring";
-//import mailer from "../../services/Mail";
 
 import db from "../../DB/database";
 
@@ -35,12 +34,16 @@ export default {
 				// 	<br /><br />
 				// 	<b>Thank you</b>
 				//   `;
-				// await mailer.sendEmail(
-				// 	"emijustice@dev.com",
-				// 	args.userInput.email,
-				// 	"Verify your Email",
-				// 	html
-				// );
+				// await mailer
+				// 	.sendEmail(
+				// 		"emijustice@dev.com",
+				// 		args.userInput.email,
+				// 		"Verify your Email",
+				// 		html
+				// 	)
+				// 	.then(() => {
+				// 		console.log("mail sent");
+				// 	});
 
 				const user = await db.users.create({
 					name: args.userInput.name,
@@ -51,7 +54,7 @@ export default {
 					created_at: new Date().toDateString(),
 					updated_at: new Date().toDateString(),
 				});
-				//console.log(user.dataValues);
+				// console.log("newly created user", user.dataValues);
 				return user;
 			}
 		} catch (err) {
@@ -71,9 +74,6 @@ export default {
 			if (!isValidPass) {
 				throw new Error("Invalid Password");
 			}
-			// if (!user.verified) {
-			// 	throw new Error("You need to verify your email");
-			// }
 
 			const token = jwt.sign(
 				{ userId: user.id, email: user.email },
@@ -83,7 +83,6 @@ export default {
 
 			return {
 				userId: user.id,
-				email: user.email,
 				token: token,
 				tokenExpiration: 24,
 			};
