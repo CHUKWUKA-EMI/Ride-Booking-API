@@ -42,9 +42,5 @@ jobs:
           command: node -p "require('ip').address()" > logs/ip.log
 
       - run:
-          name: waiting for node server to start
-          command: wget --retry-connrefused --waitretry=2 -t 5 "http://localhost:5000/graphql" > /dev/null
-
-      - run:
           name: test
           command: npm test
