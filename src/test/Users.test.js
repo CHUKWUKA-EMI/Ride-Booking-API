@@ -15,14 +15,14 @@ describe("Users resolvers", () => {
 		DB.users.destroy({ truncate: true });
 		const createUserMutation = `
 			mutation {
-			 createUser(userInput: { email:"emichukwukajustice@gmail.com", password:"start12345", name: "justice" }) {
+			 createUser(userInput: { email:"emichukukajustice@gmail.com", password:"start12345", name: "justice" }) {
 				 id
 			 }
 			}
 		`;
 		const query = `
 			query {
-				login(email:"emichukwukajustice@gmail.com", password:"start12345"){
+				login(email:"emichukukajustice@gmail.com", password:"start12345"){
 					token
 				}
 			}
@@ -43,7 +43,7 @@ describe("Users resolvers", () => {
 	it("should create users", async () => {
 		const query = `
 			mutation{
-				createUser(userInput:{name:"chukwuka",email:"emichukwuka@gmail.com", password:"start12345"}){
+				createUser(userInput:{name:"chukwuka",email:"emichukuka@gmail.com", password:"start12345"}){
 					id
 					name
 					email
@@ -56,13 +56,13 @@ describe("Users resolvers", () => {
 		const { data } = result;
 		const { createUser } = data;
 		const { email } = createUser;
-		expect(email).toBe("emichukwuka@gmail.com");
+		expect(email).toBe("emichukuka@gmail.com");
 	});
 
 	it("should login users", async () => {
 		const query = `
 		  query{
-				login(email:"emichukwuka@gmail.com",password:"start12345"){
+				login(email:"emichukuka@gmail.com",password:"start12345"){
 					userId
 					token
 					tokenExpiration

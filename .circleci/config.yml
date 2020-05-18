@@ -7,7 +7,7 @@ jobs:
 
         environment:
           MYSQL_ROOT_PASSWORD: start12345
-          MYSQL_DATABASE: travellers
+          MYSQL_DATABASE: justice
           MYSQL_USER: user
           MYSQL_PASSWORD: start12345
 
