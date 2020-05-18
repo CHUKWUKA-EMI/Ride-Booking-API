@@ -33,5 +33,18 @@ jobs:
           name: install-npm-wee
           command: npm install
       - run:
+          name: starting node server
+          command: mkdir logs && npm run start-dev 2>&1 | tee logs/node_server.log
+          background: true
+
+      - run:
+          name: storing local IP address
+          command: node -p "require('ip').address()" > logs/ip.log
+
+      - run:
+          name: waiting for node server to start
+          command: wget --retry-connrefused --waitretry=2 -t 5 "http://$(cat logs/ip.log):5000" > /dev/null
+
+      - run:
           name: test
           command: npm test
