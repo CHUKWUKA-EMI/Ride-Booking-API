@@ -15,7 +15,7 @@ jobs:
       - checkout
       - run:
           name: start dev server
-          command: npm run start-dev
+          command: npm start
       - run:
           # Our primary container isn't MYSQL so run a sleep command until it's ready.
           name: Waiting for MySQL to be ready
