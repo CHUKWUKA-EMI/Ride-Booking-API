@@ -100,9 +100,7 @@ describe("Users resolvers", () => {
 			headers: { Authorization: `Bearer ${userToken}` },
 		});
 
-		console.log(bookings, userToken);
 		expect(bookings.length).toBe(0);
-		// expect(bookings[0].completed).toBe(false);
 	});
 
 	it("should book a ride", async () => {
@@ -125,6 +123,48 @@ describe("Users resolvers", () => {
 			headers: { Authorization: `Bearer ${userToken}` },
 		});
 		expect(result.data.data.bookTrip.completed).toBe(false);
+	});
+
+	it("should edit a trip", async () => {
+		const query = `
+		  mutation{
+				editTrip(bookingId:"45508572-e141-41ea-862d-8d1c27f2ce76",completed:true){
+					id
+					user_id
+					trip
+					completed
+				}
+    }
+		`;
+		const result = await axios({
+			method: "post",
+			url: "http://localhost:5000/graphql",
+			data: {
+				query,
+			},
+			headers: { Authorization: `Bearer ${userToken}` },
+		});
+		expect(result.data.data.editTrip.completed).toBe(true);
+	});
+	it("should get all completed trips", async () => {
+		const query = `
+		  query{
+				completedTrips(completed:true){
+					id
+					completed
+				}
+     }
+		`;
+		const result = await axios({
+			method: "post",
+			url: "http://localhost:5000/graphql",
+			data: {
+				query,
+			},
+			headers: { Authorization: `Bearer ${userToken}` },
+		});
+		console.log(result.data.data);
+		expect(result.data.data.completedTrips[0].completed).toBe(true);
 	});
 });
 
