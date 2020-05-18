@@ -92,7 +92,7 @@ describe("Users resolvers", () => {
 			},
 		} = await axios({
 			method: "post",
-			url: "http://localhost:5000/graphql",
+			url: "http://192.168.176.3:5000/graphql",
 			data: {
 				query,
 			},
