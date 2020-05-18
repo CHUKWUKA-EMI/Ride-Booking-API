@@ -105,10 +105,10 @@ describe("Users resolvers", () => {
 		// expect(bookings[0].completed).toBe(false);
 	});
 
-	xit("should book a ride", async () => {
+	it("should book a ride", async () => {
 		const query = `
 		    mutation{
-						bookTrip(routeId:"4346ca76-96fd-11ea-81e7-1458d0b9c001"){
+						bookTrip(routeId:"5dc443b2-9902-11ea-9542-c6179ebd12bd"){
 								id
 								user_id
 								trip
@@ -116,18 +116,15 @@ describe("Users resolvers", () => {
 						}
 	      }
 		`;
-		const Authorization = () => ({
-			req: { headers: { Authorization: `Bearer ${userToken}` } },
+		const result = await axios({
+			method: "post",
+			url: "http://localhost:5000/graphql",
+			data: {
+				query,
+			},
+			headers: { Authorization: `Bearer ${userToken}` },
 		});
-		const result = await graphql(
-			schema,
-			query,
-			bookingResolvers,
-			Authorization()
-		);
-		console.log(result);
-		const { data } = result;
-		expect(data.bookTrip).to.be.ok;
+		expect(result.data.data.bookTrip.completed).toBe(false);
 	});
 });
 
