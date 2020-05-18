@@ -8,7 +8,7 @@ jobs:
         environment:
           MYSQL_ROOT_PASSWORD: start12345
           MYSQL_DATABASE: justice
-          MYSQL_USER: user
+          MYSQL_USER: rowland
           MYSQL_PASSWORD: start12345
 
     steps:
