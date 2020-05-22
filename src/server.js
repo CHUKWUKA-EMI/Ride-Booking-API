@@ -13,7 +13,7 @@ import isAuth from "./middleware/Authorization";
 const app = express();
 
 dotenv.config();
-
+app.use(bodyParser());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(isAuth);
