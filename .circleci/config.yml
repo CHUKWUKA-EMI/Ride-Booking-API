@@ -26,7 +26,7 @@ jobs:
             echo Failed waiting for POSTGRESQL && exit 1
       - run:
           name: Install POSTGRESQL CLI; Import dummy data; run an example query
-          command: sudo apt-get install default-postgresql-client
+          command: sudo apt update && sudo apt install postgresql-client
       - run:
           name: install-npm-wee
           command: npm install
