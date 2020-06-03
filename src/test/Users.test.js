@@ -128,7 +128,7 @@ describe("Users resolvers", () => {
 	it("should edit a trip", async () => {
 		const query = `
 		  mutation{
-				editTrip(bookingId:"45508572-e141-41ea-862d-8d1c27f2ce76",completed:true){
+				editTrip(bookingId:"64716986-d027-429d-9295-7fb3d45656ab",completed:true){
 					id
 					user_id
 					trip
