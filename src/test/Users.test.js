@@ -106,7 +106,7 @@ describe("Users resolvers", () => {
 	it("should book a ride", async () => {
 		const query = `
 		    mutation{
-						bookTrip(routeId:"5dc443b2-9902-11ea-9542-c6179ebd12bd"){
+						bookTrip(routeId:"ca208971-5af0-4a72-8d7f-c8f5c6f5645f"){
 								id
 								user_id
 								trip
