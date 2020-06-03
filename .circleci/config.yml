@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:lts
-      - image: postgresql:8.0.3
+      - image: postgres:8.0.3
 
         environment:
           POSTGRES_DB: mjrjfmbg
