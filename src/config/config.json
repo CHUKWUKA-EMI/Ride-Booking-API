@@ -1,11 +1,11 @@
 {
 	"development": {
-		"username": "rowland",
-		"password": "start12345",
-		"database": "justice",
-		"host": "mysql-8867-0.cloudclusters.net",
-		"dialect": "mysql",
-		"port": 8867
+		"username": "mjrjfmbg",
+		"password": "8UTF9HKTaXKeDaRGVbykOgzTZ152ElB1",
+		"database": "mjrjfmbg",
+		"host": "kandula.db.elephantsql.com",
+		"dialect": "postgresql",
+		"port": 5432
 	},
 	"test": {
 		"username": "root",

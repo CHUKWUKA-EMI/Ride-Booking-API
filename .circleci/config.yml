@@ -3,20 +3,19 @@ jobs:
   build:
     docker:
       - image: circleci/node:lts
-      - image: mysql:8.0.3
+      - image: postgresql:8.0.3
 
         environment:
-          MYSQL_ROOT_PASSWORD: start12345
-          MYSQL_DATABASE: justice
-          MYSQL_USER: rowland
-          MYSQL_PASSWORD: start12345
+          POSTGRES_DB: mjrjfmbg
+          POSTGRES_PASSWORD: 8UTF9HKTaXKeDaRGVbykOgzTZ152ElB1
+          POSTGRES_USER: mjrjfmbg
 
     steps:
       - checkout
 
       - run:
-          # Our primary container isn't MYSQL so run a sleep command until it's ready.
-          name: Waiting for MySQL to be ready
+          # Our primary container isn't POSTGRESQL so run a sleep command until it's ready.
+          name: Waiting for POSTGRESQL to be ready
           command: |
             for i in `seq 1 10`;
             do
@@ -24,11 +23,10 @@ jobs:
               echo -n .
               sleep 1
             done
-            echo Failed waiting for MySQL && exit 1
+            echo Failed waiting for POSTGRESQL && exit 1
       - run:
-          name: Install MySQL CLI; Import dummy data; run an example query
-          command: |
-            sudo apt-get install default-mysql-client
+          name: Install POSTGRESQL CLI; Import dummy data; run an example query
+          command: sudo apt-get install default-postgresql-client
       - run:
           name: install-npm-wee
           command: npm install

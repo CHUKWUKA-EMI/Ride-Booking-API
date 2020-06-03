@@ -18,5 +18,5 @@ db.bookings = bookings;
 
 // db.users.hasMany(db.bookings, { where: { foreignKey: "id" } });
 // db.bookings.belongsTo(db.users, { where: { foreignKey: "id" } });
-db.bookings.sync();
+
 export default db;
