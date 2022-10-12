@@ -28,7 +28,7 @@
 		"@sendgrid/mail": "^7.0.1",
 		"@types/mailgen": "^2.0.3",
 		"@types/randomstring": "^1.1.6",
-		"apollo-server": "^2.12.0",
+		"apollo-server": "^2.25.4",
 		"bcryptjs": "^2.4.3",
 		"cors": "^2.8.5",
 		"dataloader": "^2.0.0",
