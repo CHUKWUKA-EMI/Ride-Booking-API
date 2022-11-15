@@ -39,7 +39,7 @@
 		"graphql": "^15.0.0",
 		"ip": "^1.1.5",
 		"jsonwebtoken": "^8.5.1",
-		"mailgen": "^2.0.10",
+		"mailgen": "^2.0.27",
 		"mongoose": "^5.9.7",
 		"mysql2": "^2.1.0",
 		"nodemailer": "^6.4.6",
