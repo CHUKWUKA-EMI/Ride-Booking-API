@@ -48,7 +48,7 @@
 		"pg-hstore": "^2.3.3",
 		"randomstring": "^1.1.5",
 		"rimraf": "^3.0.2",
-		"sequelize": "^5.21.6",
+		"sequelize": "^6.29.0",
 		"sequelize-cli": "^5.5.1"
 	},
 	"devDependencies": {
